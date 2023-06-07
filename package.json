@@ -1,0 +1,29 @@
+{
+  "name": "airtelSelfie",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3006",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.14",
+    "@chakra-ui/icons": "^2.0.19",
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^4.5.8",
+    "axios": "^1.4.0",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^10.12.16",
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-webcam": "^7.1.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+  }
+}
