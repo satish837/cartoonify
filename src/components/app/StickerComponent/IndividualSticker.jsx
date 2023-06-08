@@ -4,7 +4,7 @@ import { Image as KonvaImage, Group } from "react-konva";
 import { useHoverDirty, useLongPress } from "react-use";
 
 
-export const IndividualSticker = ({ image, onDelete, onDragEnd }) => {
+const IndividualSticker = ({ image, onDelete, onDragEnd }) => {
   const imageRef = useRef(null);
   const isHovered = useHoverDirty(imageRef);
   const [stickerImage] = useImage(image.src);
@@ -67,3 +67,5 @@ export const IndividualSticker = ({ image, onDelete, onDragEnd }) => {
     </Group>
   );
 };
+
+export default IndividualSticker;

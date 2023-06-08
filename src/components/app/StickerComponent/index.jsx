@@ -1,7 +1,7 @@
 import React, { createRef, useState, useCallback } from "react";
 import { Image as KonvaImage, Layer, Stage } from "react-konva";
 import useImage from "use-image";
-import { IndividualSticker } from "./individualSticker";
+import IndividualSticker from "./IndividualSticker";
 import { stickersData } from "./stickerData";
 import { Image } from "@chakra-ui/image";
 import { Box } from "@chakra-ui/layout";
