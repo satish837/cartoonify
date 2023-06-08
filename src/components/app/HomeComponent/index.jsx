@@ -1,11 +1,18 @@
 import React, { useRef } from 'react';
-import { Button, Center, Flex, Spinner, Text } from '@chakra-ui/react'
+import { Box, Button, Center, Flex, Spinner, Text } from '@chakra-ui/react'
 import Webcam from "react-webcam";
 import axios from 'axios';
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import dynamic from 'next/dynamic';
 
 const FormData = require('form-data');
 
-
+const Sticker = dynamic(() => import("../StickerComponent"), {
+  ssr: false,
+});
 
 const videoConstraints = {
   width: 400,
@@ -155,15 +162,13 @@ export default function Homepage() {
         )}
         {!uploadedImagePath && isProcessing && <Proecessing />}
         {uploadedImagePath && (
-          <Flex direction="column" >
-            <div  ref={ref} id='elem'>
-                <img src={uploadedImagePath} width={400} height={400}/>
-            </div>
-            <Button>Download Sticker</Button>
-          </Flex>
+        <Flex direction="column">
+          <Box ref={ref} id="elem">
+            <Sticker image={uploadedImagePath}/>
+          </Box>
+        </Flex>
         )}
       </Flex>
-
     </Center>
   );
 }
