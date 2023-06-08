@@ -160,11 +160,14 @@ export default function Homepage() {
             onProceedImage={onUploadImageToCloudinary}
           />
         )}
-        {!uploadedImagePath && isProcessing && <Proecessing />}
+       {!uploadedImagePath && isProcessing && <Proecessing />}
         {uploadedImagePath && (
         <Flex direction="column">
           <Box ref={ref} id="elem">
-            <Sticker image={uploadedImagePath}/>
+            <Sticker 
+              image={uploadedImagePath}
+              logoImg='/stickers/hashtag.png'
+            />
           </Box>
         </Flex>
         )}

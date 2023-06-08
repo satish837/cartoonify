@@ -8,8 +8,9 @@ import { Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 
 
-export default function Sticker({ image }) {
+export default function Sticker({ image, logoImg }) {
   const [background] = useImage(image, 'Anonymous');
+  const [logoSticker] = useImage(logoImg, 'Anonymous');
   const [images, setImages] = useState([]);
   const stageRef = React.useRef(null);
 
@@ -57,7 +58,7 @@ export default function Sticker({ image }) {
 
   const handleExport = () => {
     const uri = stageRef.current.toDataURL();
-    downloadURI(uri, 'stage.jpg')
+    downloadURI(uri, 'airtel-employee-avatar.jpg')
     // we also can save uri as file
     // but in the demo on Konva website it will not work
     // because of iframe restrictions
@@ -69,7 +70,7 @@ export default function Sticker({ image }) {
     <div>
       <Stage
         width={380}
-        height={400}
+        height={530}
         onClick={handleCanvasClick}
         onTap={handleCanvasClick}
         ref={stageRef}
@@ -98,6 +99,13 @@ export default function Sticker({ image }) {
               />
             );
           })}
+          <KonvaImage 
+            image={logoSticker}  
+            height={95}  
+            width={300}
+            x={34}
+            y={410}
+          />
         </Layer>
       </Stage>
       
