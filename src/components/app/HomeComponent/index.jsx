@@ -93,7 +93,7 @@ export default function Homepage() {
     let config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `https://www.cutout.pro/api/v1/cartoonSelfieByUrl?cartoonType=7&url=${url}`,
+      url: `https://www.cutout.pro/api/v1/cartoonSelfieByUrl?cartoonType=11_full&url=${url}`,
       headers: { 
         'Accept': 'application/json', 
         'APIKEY': '544b363b1de24a909d414da1ec3a2ee4', 
