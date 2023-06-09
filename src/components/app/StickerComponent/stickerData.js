@@ -1,16 +1,21 @@
 export const stickersData = [
     {
-      url: "/stickers/airtel-logo.png",
-      width: 50,
+      url: "/images/rocket.png",
+      width: 55,
       alt: "Airtel"
     },
     {
-      url: "/stickers/blub.jpg",
-      width: 50,
+      url: "/images/bulb.png",
+      width: 55,
       alt: "Blub"
     },
     {
-      url: "/stickers/dumb.png",
+      url: "/images/dumble.png",
+      width: 55,
+      alt: "Dumb"
+    },
+    {
+      url: "/images/thunderbolt.png",
       width: 50,
       alt: "Dumb"
     }

@@ -49,8 +49,8 @@ const IndividualSticker = ({ image, onDelete, onDragEnd }) => {
     >
       <KonvaImage
         ref={imageRef}
-        width={image.width}
-        height={stickerHeight}
+        width={image.width + 30}
+        height={stickerHeight + 30}
         image={stickerImage}
         {...longPressEvent}
       />
@@ -61,7 +61,7 @@ const IndividualSticker = ({ image, onDelete, onDragEnd }) => {
           image={deleteImage}
           width={25}
           height={25}
-          offsetX={-stickerWidth / 2 - 20}
+          offsetX={-stickerWidth / 2 - 40}
         />
       )}
     </Group>

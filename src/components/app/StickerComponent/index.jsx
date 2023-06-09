@@ -101,36 +101,36 @@ export default function Sticker({ image, logoImg }) {
           })}
           <KonvaImage 
             image={logoSticker}  
-            height={95}  
-            width={300}
-            x={34}
-            y={410}
+            height={125}  
+            width={380}
+            x={0}
+            y={400}
           />
         </Layer>
       </Stage>
       
-      <Box mt={5}>  
-      {stickersData.map((sticker, id) => {
-        return (
-          <button
-            key={id}
-            className="button"
-            onMouseDown={() => {
-              addStickerToPanel({
-                src: sticker.url,
-                width: sticker.width,
-                x: 100,
-                y: 100
-              });
-            }}
-          >
-            <Image alt={sticker.alt} src={sticker.url} width={sticker.width} />
-          </button>
-        );
-      })}
+      <Box display="flex" justifyContent="space-between" my={5} bg="gray.50" p={3} shadow="sm">  
+        {stickersData.map((sticker, id) => {
+          return (
+            <button
+              key={id}
+              className="button"
+              onMouseDown={() => {
+                addStickerToPanel({
+                  src: sticker.url,
+                  width: sticker.width,
+                  x: 100,
+                  y: 100
+                });
+              }}
+            >
+              <Image alt={sticker.alt} src={sticker.url} width={sticker.width} />
+            </button>
+          );
+        })}
 
     </Box> 
-    <Button onClick={handleExport}>Download Sticker</Button>
+      <Button colorScheme='red' w={'100%'} onClick={handleExport}>Download Sticker</Button>
     </div> 
   );
 }
