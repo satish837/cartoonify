@@ -93,7 +93,7 @@ function Proecessing() {
 export default function Homepage() {
   const [imageSrc, setImageSrc] = React.useState("");
   const [uploadedImagePath, setUploadedImagePath] = React.useState("");
-  const [hashtagImage, setHashtagImage] = React.useState("/images/hashtag.png");
+  const [hashtagImage, setHashtagImage] = React.useState("/images/hashtags/1.jpg");
   const [isProcessing, setIsProcessing] = React.useState(false);
   const ref = React.useRef(null);
 
@@ -205,7 +205,7 @@ export default function Homepage() {
               />
             </Box>
           </Flex>
-         )}
+          )}
       </Flex>
     </Center>
   );

@@ -12,10 +12,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 const sliderHashTagsImages = [
-  '/images/hashtags/1.png',
-  '/images/hashtags/2.png',
-  '/images/hashtags/3.png',
-  '/images/hashtags/4.png'
+  '/images/hashtags/1.jpg',
+  '/images/hashtags/2.jpg',
+  '/images/hashtags/3.jpg',
+  '/images/hashtags/4.jpg'
 ]
 
 
@@ -26,10 +26,9 @@ function HashtagSlider({ onHashTagClick }) {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
-    centerMode: true,
   };
   return (
-    <Box display="flex" w={'380px'} justifyContent="space-between" my={1} bg="gray.50" p={3} shadow="sm">
+    <Box display="flex" w={'380px'} justifyContent="space-between"  p={2}>
       <Slider {...settings} style={{width: '100%'}}>
         {
           sliderHashTagsImages.map((hashtagImgPath => {
@@ -131,7 +130,7 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
           })}
           <KonvaImage 
             image={logoSticker}  
-            height={125}  
+            height={105}  
             width={380}
             x={0}
             y={400}
@@ -151,8 +150,8 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
                 addStickerToPanel({
                   src: sticker.url,
                   width: sticker.width,
-                  x: 100,
-                  y: 100
+                  x: 200,
+                  y: 200
                 });
               }}
             >
