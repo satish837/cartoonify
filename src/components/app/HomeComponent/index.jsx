@@ -93,6 +93,7 @@ function Proecessing() {
 export default function Homepage() {
   const [imageSrc, setImageSrc] = React.useState("");
   const [uploadedImagePath, setUploadedImagePath] = React.useState("");
+  const [hashtagImage, setHashtagImage] = React.useState("/images/hashtag.png");
   const [isProcessing, setIsProcessing] = React.useState(false);
   const ref = React.useRef(null);
 
@@ -199,11 +200,12 @@ export default function Homepage() {
             <Box ref={ref} id="elem">
               <Sticker
                 image={uploadedImagePath}
-                logoImg="/images/hashtag.png"
+                logoImg={hashtagImage}
+                onHashTagClick={setHashtagImage}
               />
             </Box>
           </Flex>
-        )}
+         )}
       </Flex>
     </Center>
   );

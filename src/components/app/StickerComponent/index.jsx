@@ -6,14 +6,51 @@ import { stickersData } from "./stickerData";
 import { Image } from "@chakra-ui/image";
 import { Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
-export default function Sticker({ image, logoImg }) {
+const sliderHashTagsImages = [
+  '/images/hashtags/1.png',
+  '/images/hashtags/2.png',
+  '/images/hashtags/3.png',
+  '/images/hashtags/4.png'
+]
+
+
+function HashtagSlider({ onHashTagClick }) {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    centerMode: true,
+  };
+  return (
+    <Box display="flex" w={'380px'} justifyContent="space-between" my={1} bg="gray.50" p={3} shadow="sm">
+      <Slider {...settings} style={{width: '100%'}}>
+        {
+          sliderHashTagsImages.map((hashtagImgPath => {
+            return (
+              <Box px={3} key={hashtagImgPath}>
+                <Image src={hashtagImgPath} onClick={() => onHashTagClick(hashtagImgPath)}/>
+                </Box>
+            )
+          }))
+        }
+      </Slider>
+    </Box>
+  )
+}
+
+
+export default function Sticker({ image, logoImg, onHashTagClick }) {
   const [background] = useImage(image, 'Anonymous');
   const [logoSticker] = useImage(logoImg, 'Anonymous');
   const [images, setImages] = useState([]);
   const stageRef = React.useRef(null);
-
 
   const addStickerToPanel = ({ src, width, x, y }) => {
     setImages((currentImages) => [
@@ -54,16 +91,9 @@ export default function Sticker({ image, logoImg }) {
     document.body.removeChild(link);
   }
   
-
-
   const handleExport = () => {
     const uri = stageRef.current.toDataURL();
     downloadURI(uri, 'airtel-employee-avatar.jpg')
-    // we also can save uri as file
-    // but in the demo on Konva website it will not work
-    // because of iframe restrictions
-    // but feel free to use it in your apps:
-    // downloadURI(uri, 'stage.png');
   };
 
   return (
@@ -108,6 +138,8 @@ export default function Sticker({ image, logoImg }) {
           />
         </Layer>
       </Stage>
+
+      <HashtagSlider onHashTagClick={(imgSrc) => onHashTagClick(imgSrc)}/>
       
       <Box display="flex" justifyContent="space-between" my={5} bg="gray.50" p={3} shadow="sm">  
         {stickersData.map((sticker, id) => {
