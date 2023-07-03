@@ -4,13 +4,12 @@ import { Image as KonvaImage, Group } from "react-konva";
 import { useHoverDirty, useLongPress } from "react-use";
 
 
-const IndividualSticker = ({ image, onDelete, onDragEnd }) => {
+const IndividualSticker = ({ image, showDeleteButton, setShowDeleteButton, onDelete, onDragEnd }) => {
   const imageRef = useRef(null);
   const isHovered = useHoverDirty(imageRef);
   const [stickerImage] = useImage(image.src);
   const [deleteImage] = useImage("cancel.svg");
-  const [showDeleteButton, setShowDeleteButton] = useState(false);
-
+  
   const onLongPress = () => {
     setShowDeleteButton(true);
   };

@@ -205,7 +205,7 @@ export default function Homepage() {
               />
             </Box>
           </Flex>
-          )}
+        )}
       </Flex>
     </Center>
   );

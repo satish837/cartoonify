@@ -49,6 +49,7 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
   const [background] = useImage(image, 'Anonymous');
   const [logoSticker] = useImage(logoImg, 'Anonymous');
   const [images, setImages] = useState([]);
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
   const stageRef = React.useRef(null);
 
   const addStickerToPanel = ({ src, width, x, y }) => {
@@ -91,8 +92,11 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
   }
   
   const handleExport = () => {
-    const uri = stageRef.current.toDataURL();
-    downloadURI(uri, 'airtel-employee-avatar.jpg')
+    setShowDeleteButton(false)
+    setTimeout(() => {
+      const uri = stageRef.current.toDataURL();
+      downloadURI(uri, 'airtel-employee-avatar.jpg')
+    }, 1000)
   };
 
   return (
@@ -125,6 +129,8 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
                 }}
                 key={i}
                 image={image}
+                showDeleteButton={showDeleteButton} 
+                setShowDeleteButton={setShowDeleteButton}
               />
             );
           })}
