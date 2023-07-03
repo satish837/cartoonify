@@ -16,7 +16,7 @@ export const stickersData = [
     },
     {
       url: "/images/thunderbolt.png",
-      width: 50,
+      width: 55,
       alt: "Dumb"
     }
   ];
