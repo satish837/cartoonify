@@ -96,9 +96,6 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
           body: formData,
         }
       ).then((r) => r.json());
-     
-      console.log(data);
-    
   }, []);
 
   function downloadURI(uri, name) {
@@ -125,7 +122,7 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
     <div>
       <Stage
         width={380}
-        height={530}
+        height={505}
         onClick={handleCanvasClick}
         onTap={handleCanvasClick}
         ref={stageRef}
@@ -190,7 +187,7 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
 
     </Box> 
       <Button loadingText='Please wait...' isLoading={isProcessing} colorScheme='red' w={'100%'} onClick={handleExport}>
-       Download Sticker
+       Save & Download Sticker
       </Button>
     </div> 
   );
