@@ -134,7 +134,6 @@ export default function Homepage() {
       },
     } = await axios.request(config).catch((e) => console.log(e));
     const img = await uploadImageToCloudinary(imageUrl);
-    console.log(img);
     setUploadedImagePath(img);
     setIsProcessing(false);
   };
@@ -205,7 +204,7 @@ export default function Homepage() {
               />
             </Box>
           </Flex>
-        )}
+       )} 
       </Flex>
     </Center>
   );

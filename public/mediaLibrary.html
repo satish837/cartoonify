@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://media-library.cloudinary.com/global/all.js"></script>
+	<script>
+		$(document).ready(function() {
+		  // Cloudinary configuration
+		
+		  
+		  // Button click event
+		  $('#open-btn').click(function() {
+
+		   
+
+			 cloudinary.createMediaLibrary(
+			  {
+			     cloud_name: 'din1iizbq',
+		      api_key: '897355128321859',
+			    remove_header: false,
+			    max_files: "1",
+			    insert_caption: "Insert",
+			    inline_container: "#widget_container",
+			    default_transformations: [[]],
+			    button_class: "myBtn",
+			    button_caption: "Select Image or Video"
+			  },
+			  {
+			    insertHandler: function (data) {
+			      data.assets.forEach((asset) => {
+			        console.log("Inserted asset:", JSON.stringify(asset, null, 2));
+			      });
+			    }
+			  },
+			  document.getElementById("open-btn")
+			);
+
+		});
+
+
+		});
+	</script>
+</head>
+<body>
+	<button id="open-btn">Open Media Library</button>
+	 <hr />
+    <div id="widget_container" style="height: 1000px;"></div>
+</body>
+</html>

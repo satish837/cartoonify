@@ -50,6 +50,7 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
   const [logoSticker] = useImage(logoImg, 'Anonymous');
   const [images, setImages] = useState([]);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false)
   const stageRef = React.useRef(null);
 
   const addStickerToPanel = ({ src, width, x, y }) => {
@@ -82,6 +83,24 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
     [resetAllButtons]
   );
 
+  const onUploadImageToCloudinary = React.useCallback(async (imageBase64) => {
+      const formData = new FormData();
+      formData.append("file", imageBase64);
+      formData.append("folder", "stickers")
+      formData.append("upload_preset", "nnbc8dy5");
+
+      const data = await fetch(
+        "https://api.cloudinary.com/v1_1/din1iizbq/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      ).then((r) => r.json());
+     
+      console.log(data);
+    
+  }, []);
+
   function downloadURI(uri, name) {
     var link = document.createElement('a');
     link.download = name;
@@ -91,13 +110,16 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
     document.body.removeChild(link);
   }
   
-  const handleExport = () => {
-    setShowDeleteButton(false)
-    setTimeout(() => {
-      const uri = stageRef.current.toDataURL();
-      downloadURI(uri, 'airtel-employee-avatar.jpg')
-    }, 1000)
-  };
+  const handleExport = React.useCallback(async () => {
+      setShowDeleteButton(false)
+      setIsProcessing(true)
+      setTimeout(async () => {
+        const uri = stageRef.current.toDataURL();
+        await onUploadImageToCloudinary(uri)
+        downloadURI(uri, 'airtel-employee-avatar.jpg');
+        setIsProcessing(false)
+      }, 2000)
+  }, []);
 
   return (
     <div>
@@ -167,7 +189,9 @@ export default function Sticker({ image, logoImg, onHashTagClick }) {
         })}
 
     </Box> 
-      <Button colorScheme='red' w={'100%'} onClick={handleExport}>Download Sticker</Button>
+      <Button loadingText='Please wait...' isLoading={isProcessing} colorScheme='red' w={'100%'} onClick={handleExport}>
+       Download Sticker
+      </Button>
     </div> 
   );
 }
